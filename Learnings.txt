@@ -1,0 +1,22 @@
+glad:
+- essentially a function mapping of openGL to GPU/driver functions
+- your graphics platform should support the implementation of all declared OpenGL function signatures
+- this means openGL is an "API" but unimplemented where your device implements it
+- glad maps the openGL function pointers to the assoiciated platform specific implementation
+
+graphics pipeline:
+- 3D vertices converted through transformation matrices to 2D coordinates
+- 2D coordinates into coloured pixels on the screen
+- the programs that run the pipeline operations are "shaders" - they run on the GPU or integrated graphics portion of CPU
+- model -> world -> view/perspective -> ndcs -> display
+
+shaders:
+- vertex shader, geometry shader and fragment shader are overridable by programmer (vertex and fragment don't have defaults so MUST be implemented)
+    - vertex shader runs per vertice - allows attribute processing
+- primitive assembly forms a primitive shape out of the vertices
+- geometry shader gets the output of the primitive assembly shader (a primitive)
+    - can emit new vertices to make more shapes (i.e. divide structure into many triangles)
+- rasterization stage maps resulting primitives into pivels on the final screen, clipping discards all outside FOV
+- fragment shader calculates final color of a pixel
+    - needs information on light sources, shadows casted etc.
+- a final stage discards fragments that are deeper than other fragments (or blends them if the shallow object has some transparency)
