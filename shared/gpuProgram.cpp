@@ -94,7 +94,7 @@ void GPUProgram::init( const char *vsTextIn, const char *fsTextIn, const char* s
   char *fsText = strdup(fsTextIn);
 
 #ifdef __APPLE__
-  // On MacOS, replace "#version 300 es" with "#version 330   " in each shader
+  // On MacOS, replace "#version 330 es" with "#version 330   " in each shader
 
   char *p;
 

@@ -47,7 +47,7 @@ class GPUProgram {
 
   char* textFileRead(const char *fileName);
 
-  void setMat4( const char *name, mat4 &M ) {
+  void setMat4( const char *name, const mat4 &M ) {
     glUniformMatrix4fv( glGetUniformLocation( program_id, name ), 1, GL_TRUE, &M[0][0] );
   }
 
@@ -75,12 +75,12 @@ class GPUProgram {
 
     GLuint errnum;
     bool gotErrors = false;
-    
+
     while ((errnum = glGetError())) {
       std::cerr << where << ": OpenGL error " << errnum << std::endl;
       gotErrors = true;
     }
-    
+
     if (gotErrors)
       exit(1);
   }
