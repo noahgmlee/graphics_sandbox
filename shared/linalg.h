@@ -36,7 +36,7 @@ public:
   }
 
   bool operator != (const vec2 p) {
-    return x != p.x || y != p.y; 
+    return x != p.x || y != p.y;
   }
 
   vec2 operator + (vec2 p)
@@ -96,7 +96,7 @@ public:
   }
 
   bool operator != (const vec3 p) const {
-    return x != p.x || y != p.y || z != p.z; 
+    return x != p.x || y != p.y || z != p.z;
   }
 
   vec3 operator + (vec3 p) const
@@ -129,7 +129,7 @@ public:
   float & operator[]( unsigned int index ) {
     return (&x)[index];
   }
-  
+
   float distanceToLine( vec3 lineStart, vec3 lineDir );
 
   vec3 perp1();
@@ -197,7 +197,7 @@ public:
     if (w != 0)
       return vec3( x/w, y/w, z/w );
     else
-      return vec3( x, y, z );   
+      return vec3( x, y, z );
   }
 
   float length() const
@@ -209,7 +209,7 @@ public:
   float & operator[]( unsigned int index ) {
     return (&x)[index];
   }
-  
+
 };
 
 // Scalar/vec4 multiplication
@@ -285,7 +285,7 @@ std::istream& operator >> ( std::istream& stream, quaternion & q );
 class mat3 {
 
 public:
-  
+
   vec3 rows[3];
 
   mat3() {}
@@ -314,7 +314,7 @@ std::istream& operator >> ( std::istream& stream, mat3 & m );
 class mat4 {
 
 public:
-  
+
   vec4 rows[4];
 
   mat4() {}
@@ -348,6 +348,7 @@ mat4 identity4();
 mat4 scale( float x, float y, float z );
 mat4 translate( float x, float y, float z );
 mat4 translate( vec3 v );
+mat4 rotate( float thetaX, float thetaY, float thetaZ );
 mat4 rotate( float theta, vec3 axis );
 
 mat4 frustum( float l, float r, float b, float t, float n, float f );

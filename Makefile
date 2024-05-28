@@ -7,7 +7,7 @@ ROLLER_OBJS = $(patsubst Rollercoaster/%.cpp, Rollercoaster/bin/%.o, $(ROLLER_SR
 MVP_SRCS = $(wildcard MVP/*.cpp)
 MVP_OBJS = $(patsubst MVP/%.cpp, MVP/bin/%.o, $(MVP_SRCS))
 
-all: shared buildM buildRC buildMVP
+all: shared buildR buildM buildRC buildMVP
 
 buildMVP: $(SHARED_OBJS) $(MVP_OBJS) bin/glad.o
 	$(CXX) $(CXXFLAGS) -g $^ -o bin/MVP -lglfw
@@ -24,11 +24,17 @@ Rollercoaster/bin/%.o: Rollercoaster/%.cpp
 buildM: $(SHARED_OBJS) bin/glad.o
 	$(CXX) $(CXXFLAGS) -g M/M.cpp $^ -o bin/M -lglfw
 
+buildR: $(SHARED_OBJS) bin/glad.o
+	$(CXX) $(CXXFLAGS) -g R/R.cpp $^ -o bin/R -lglfw
+
 bin/%.o: shared/%.cpp
 	$(CXX) $(CXXFLAGS) -g -c $< -o $@ -Wno-writable-strings
 
 bin/glad.o:
 	gcc -g -c glad/glad.c -o bin/glad.o
+
+runR:
+	./bin/R
 
 runM:
 	./bin/M

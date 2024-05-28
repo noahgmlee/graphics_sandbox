@@ -399,6 +399,31 @@ mat4 translate( vec3 v )
   return out;
 }
 
+mat4 rotate( float thetaX, float thetaY, float thetaZ ) {
+  mat4 Rx, Ry, Rz;
+
+  //X-axis
+  Rx.rows[0] = vec4( 1,             0,              0,            0 );
+  Rx.rows[1] = vec4( 0,             cos(thetaX),    -sin(thetaX), 0 );
+  Rx.rows[2] = vec4( 0,             sin(thetaX),    cos(thetaX),  0 );
+  Rx.rows[3] = vec4( 0,             0,              0,            1 );
+
+  //Y-axis
+  Ry.rows[0] = vec4( cos(thetaY),   0,              sin(thetaY),  0 );
+  Ry.rows[1] = vec4( 0,             1,              0,            0 );
+  Ry.rows[2] = vec4( -sin(thetaY),  0,              cos(thetaY),  0 );
+  Ry.rows[3] = vec4( 0,             0,              0,            1 );
+
+  //Z-axis
+  Rz.rows[0] = vec4( cos(thetaZ),   -sin(thetaZ),   0,            0 );
+  Rz.rows[1] = vec4( sin(thetaZ),   cos(thetaZ),    0,            0 );
+  Rz.rows[2] = vec4( 0,             0,              1,            0 );
+  Rz.rows[3] = vec4( 0,             0,              0,            1 );
+
+  //combine
+  mat4 out = Rz * Ry * Rx;
+  return out;
+}
 
 mat4 rotate( float theta, vec3 axis )
 

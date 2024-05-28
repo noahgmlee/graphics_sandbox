@@ -27,7 +27,7 @@ void errorCallback( int error, const char* description )
     exit(1);
 }
 
-void setupSquareVAO()
+void setupCubeVAO()
 {
     glGenVertexArrays( 1, &squareVAO );
     glBindVertexArray( squareVAO );
@@ -172,7 +172,8 @@ void display()
 {
 
     mat4 S = scale( state.len, state.len, state.len);   // scale by square size
-    mat4 R = rotate( state.theta, vec3(1,1,1) ); // rotate by theta radians about (0,0,1)
+    //mat4 R = rotate( state.theta, vec3(1,1,1) ); // rotate by theta radians about (1,1,1)
+    mat4 R = rotate( state.theta, state.theta, state.theta ); // rotate by theta radians about each axis
     mat4 T = translate( vec3( -0.5, 0.5, 0 ) ); // translate from the origin to (-0.5,0.5,0)
 
     mat4 M = T * R * S;
@@ -231,7 +232,7 @@ int main() {
     myGPUProgram = new GPUProgram( "M/shader.vert", "M/shader.frag", "ProgramShader");
     myGPUProgram->activate();
 
-    setupSquareVAO();
+    setupCubeVAO();
 
     struct timeb prevTime, thisTime; // record the last rendering time
     ftime( &prevTime );
