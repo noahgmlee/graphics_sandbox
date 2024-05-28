@@ -60,7 +60,7 @@ void Train::advance( float elapsedSeconds )
 	vec3 o, x, y, z;
 	spline->findLocalSystem(t, o, x, y, z);
     #if 1 // normal gravity of -9.8m/s^2
-		velocity = speed * z + elapsedSeconds * (GRAVITY * z) * z;
+		velocity = speed * z + elapsedSeconds * (5 * GRAVITY * z) * z;
 
     #else // increased gravity to better visualize effect of physics on train (doubled)
 		velocity = speed * z + elapsedSeconds * (2 * GRAVITY);

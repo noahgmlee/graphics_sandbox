@@ -201,7 +201,7 @@ const char *Sphere::vertShader = R"(
   }
 )";
 
-
+//hard coding colour in MVP usage
 const char *Sphere::fragShader = R"(
 
   #version 330 es
@@ -219,7 +219,7 @@ const char *Sphere::fragShader = R"(
     if (NdotL < 0.0)
       NdotL = 0.1; // some ambient
 
-    outputColour = vec4( NdotL * colour, 1.0 );
+    outputColour = vec4( 1.0, 1.0, 1.0, 1.0 );
   }
 )";
 
