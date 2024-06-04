@@ -172,11 +172,10 @@ void display()
 {
 
     mat4 S = scale( state.len, state.len, state.len);   // scale by square size
-    //mat4 R = rotate( state.theta, vec3(1,1,1) ); // rotate by theta radians about (1,1,1)
-    mat4 R = rotate( state.theta, state.theta, state.theta ); // rotate by theta radians about each axis
+    mat4 R = rotate( state.theta, vec3(1,1,1) ); // rotate by theta radians about (1,1,1)
     mat4 T = translate( vec3( -0.5, 0.5, 0 ) ); // translate from the origin to (-0.5,0.5,0)
 
-    mat4 M = T * R * S;
+    mat4 M = R * T * S;
 
     // vec3 eyePos = vec3(0.0, 0.0, 1.0);
     // mat4 MV = translate(-1 * eyePos) * M;
